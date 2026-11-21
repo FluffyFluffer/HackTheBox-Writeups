@@ -1,0 +1,17 @@
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# Loot / sensitive artifacts (nie commituj flag-dumpów, hashy, payloadów)
+*.ps1
+*.bin
+loot/
+scratch/
+
+# Nmap raw output
+*.nmap
+*.gnmap
+*.xml
