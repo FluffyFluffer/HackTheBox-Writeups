@@ -10,11 +10,11 @@
 
 ---
 
-## 1. Tool that can intercept web traffic
+## 1. With what kind of tool can intercept web traffic?
 
 > **Answer:** `proxy`
 
-## 2. Path to the login page
+## 2. What is the path to the directory on the webserver that returns a login page?
 
 Gobuster/ffuf didn't find the panel. The homepage HTML references a script:
 
@@ -28,7 +28,7 @@ The `/cdn-cgi/login` path leads to the panel:
 
 > **Answer:** `/cdn-cgi/login`
 
-## 3. What to modify in Firefox to reach the upload page?
+## 3. What can be modified in Firefox to get access to the upload page?
 
 Log in as **guest**. The *Uploads* tab requires super admin rights:
 
@@ -40,7 +40,7 @@ In Firefox, change the cookie value to elevate privileges:
 
 > **Answer:** `cookie`
 
-## 4. Access ID of the admin user
+## 4. What is the access ID of the admin user?
 
 Burp Intruder (brute-forcing IDs up to 10000) found nothing. In the *Account* tab the URL has an `id` parameter — changing it to `1` returns the admin ID:
 
@@ -48,11 +48,11 @@ Burp Intruder (brute-forcing IDs up to 10000) found nothing. In the *Account* ta
 
 > **Answer:** `34322`
 
-## 5. Directory where an uploaded file lands
+## 5. On uploading a file, what directory does that file appear in on the server?
 
 > **Answer:** `/uploads` (found earlier with gobuster)
 
-## 6. File with the password shared with user `robert`
+## 6. What is the file that contains the password that is shared with the robert user?
 
 After tampering the cookie, upload a [php-reverse-shell](https://github.com/pentestmonkey/php-reverse-shell) and trigger it from `/uploads/`:
 
@@ -73,14 +73,13 @@ In `/var/www/html/cdn-cgi/login/db.php` I find `robert`'s password:
 
 > **Answer:** `db.php` → password `M3g4C0rpUs3r!`
 
-## 7–10. Analyzing the `bugtracker` binary
+## 7. What executible is run with the option "-group bugtracker" to identify all files owned by the bugtracker group?
+`find`
 
-| Question | Answer |
-|---|---|
-| Binary that finds files by `-group bugtracker` | `find` |
-| Privileges `bugtracker` runs with, regardless of caller | `root` (SUID) |
-| What SUID stands for | **Set owner User ID** |
-| Name of the executable called insecurely | `cat` |
+![find-bugtracker](find-bugtracker.png)
+
+## 8. Regardless of which user starts running the bugtracker executable, what's user privileges will use to run?
+`root`
 
 `bugtracker` has the SUID bit set (owner `root`):
 
@@ -88,19 +87,23 @@ In `/var/www/html/cdn-cgi/login/db.php` I find `robert`'s password:
 -rwsr-xr-- 1 root bugtracker 8792 Jan 25  2020 /usr/bin/bugtracker
 ```
 
-![find-bugtracker](find-bugtracker.png)
+## 9. What SUID stands for?
+**Set owner User ID**
+
+## 10. What is the name of the executable being called in an insecure manner?
+`cat`
 
 `strings` reveals the binary runs `cat /root/report` — **without a full path**, so `cat` is resolved from `$PATH`. This lets us plant a fake `cat` and execute code as root:
 
 ![cat](cat.png)
 
-## 11. User flag
+## 11. Submit the flag located in the robert user's home directory.
 
 In `robert`'s home directory:
 
 > `f2c74ee8db7983851ab2a96a44eb7981`
 
-## 12. Root flag — privilege escalation
+## 12. Submit the flag located in root's home directory.
 
 `bugtracker` can only be run by root and the `bugtracker` group, so log in as `robert` over SSH (password from step 6):
 

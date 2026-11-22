@@ -30,7 +30,7 @@ PORT      STATE SERVICE      VERSION
 
 > **Answer:** `1433`
 
-## 2. Name of the non-Administrative SMB share
+## 2. What is the name of the non-Administrative share available over SMB?
 
 ```bash
 smbclient -L 10.129.130.2
@@ -47,7 +47,7 @@ IPC$            IPC       Remote IPC
 
 > **Answer:** `backups`
 
-## 3. Password identified on the SMB share
+## 3. What is the password identified in the file on the SMB share?
 
 Connect anonymously and pull the file for local analysis:
 
@@ -59,15 +59,16 @@ smbclient \\\\10.129.130.2\\backups
 
 > **Answer:** `M3g4c0rp123`
 
-## 4–6. Tooling (theory)
+## 4. What script from Impacket collection can be used in order to establish an authenticated connection to a Microsoft SQL Server?
+`mssqlclient.py`
 
-| Question | Answer |
-|---|---|
-| Impacket script to connect to MSSQL | `mssqlclient.py` |
-| MSSQL procedure that spawns a shell | `xp_cmdshell` |
-| Script to search for Windows privesc paths | `winpeas` |
+## 5. What extended stored procedure of Microsoft SQL Server can be used in order to spawn a Windows command shell?
+`xp_cmdshell`
 
-## 7. File containing the administrator's password
+## 6. What script can be used in order to search possible paths to escalate privileges on Windows hosts?
+`winpeas`
+
+## 7. What file contains the administrator's password?
 
 Connect to MSSQL with the recovered password:
 
@@ -111,11 +112,11 @@ exit
 
 > **Answer:** `ConsoleHost_history.txt` → password `MEGACORP_4dm1n!!`
 
-## 8. User flag (`sql_svc`)
+## 8. Submit the flag located on the sql_svc user's desktop.
 
 > `3e7b102e78218e935bf3f4951fec21a3`
 
-## 9. Administrator flag
+## 9. Submit the flag located on the administrator's desktop.
 
 The current session can't access the Administrator directory. Using the open port `5985`, log in as admin via `evil-winrm`:
 

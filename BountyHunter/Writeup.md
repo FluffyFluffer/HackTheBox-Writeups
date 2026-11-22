@@ -10,7 +10,7 @@
 
 ---
 
-## 1. POST endpoint of the Bounty Report System form
+## 1. What is the path to the endpoint of the web application that data is submitted to via a POST request from the form on the Bounty Report System - Beta page?
 
 Open the site and click the **Portal** tab:
 
@@ -20,7 +20,7 @@ It redirects to *Bounty Report System - Beta*. Submit some data and intercept th
 
 > **Answer:** `tracker_diRbPr00f314.php`
 
-## 2–3. Encoding and data format
+## 2. The data in the POST request is encoded with URL encoding and what other encoding?
 
 Copy the `data` parameter from the request body into CyberChef:
 
@@ -30,19 +30,17 @@ Copy the `data` parameter from the request body into CyberChef:
 
 ![cyberchef](image.png)
 
-| Question | Answer |
-|---|---|
-| Second encoding (besides URL) | `base64` |
-| Data format after decoding | `XML` |
+## 3. Looking at the data in the POST request, after URL-decoding and base64-decoding, what is the name of the data format of the data remains? 
+`XML`
 
-## 4–5. Vulnerability (theory)
+## 4. What is the three letter abbreviation for an attack sent in user supplied XML data where external entities are used to read files on the target?
 
-| Question | Answer |
-|---|---|
-| Attack using external entities in XML to read files | `XXE` |
-| Can PHP filters bypass hidden PHP source? | `yes` |
+`XXE` 
 
-## 6. `dbpassword` value in `db.php`
+## 5. The XXE vulnerability can be validated by reading a known file on the target such as '/etc/passwd', but typically when viewing a PHP file the source code will be hidden. Can this be bypassed to view the source code of the web application PHP files using PHP filters?
+`yes`
+
+## 6. What is the 'dbpassword' value in the file 'db.php'?
 
 Burp flagged the endpoint as XXE-vulnerable with a sample payload; I adapt it to read `db.php` through a PHP base64 filter:
 
@@ -75,7 +73,7 @@ $testuser = "test";
 
 > **Answer:** `m19RoAU0hP41A1sTsq6K`
 
-## 7. User flag (`development`)
+## 7. Submit the flag located in the development user's home directory.
 
 Guessing the DB password is reused for SSH. To find a username, I abuse the same XXE to read `/etc/passwd`:
 
@@ -85,7 +83,8 @@ Testing users from the bottom up, the password works for `development` — SSH i
 
 > `d9c361b5180baca4d61cc2f491d0f643`
 
-## 8. File runnable as root without a password
+## 8. What is the filename on the target that we have the ability to run as 'root' without requiring a password?
+
 
 ```bash
 sudo -l
@@ -98,7 +97,7 @@ User development may run the following commands on bountyhunter:
 
 > **Answer:** `ticketValidator.py`
 
-## 9. Dangerous method in `evaluate()`
+## 9. Performing code analysis on the 'evaluate()' function in the Python script, which dangerous method is being used that could lead to arbitary code execution?
 
 ```python
 def evaluate(ticketFile):
@@ -117,7 +116,7 @@ Validation only checks the number *before* the `+`. Everything after it is attac
 
 > **Answer:** `eval`
 
-## 10. Root flag
+## 10. Submit the flag located in root's home directory.
 
 The script runs as root, so I craft a ticket (`ticket.md`) that satisfies the `% 7 == 4` check, then injects code after the `+`:
 

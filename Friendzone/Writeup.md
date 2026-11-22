@@ -10,7 +10,7 @@
 
 ---
 
-## 1. Common name on the TLS certificate
+## 1. What is the common name for the box given on the TLS certificate on one of the open ports?
 
 Scan port 443 with the default scripts to read the certificate:
 
@@ -27,7 +27,7 @@ nmap -p443 -sC -sV 10.129.100.242
 
 > **Answer:** `friendzone.red`
 
-## 2. Samba share with anonymous read/write
+## 2. What is the name of the Samba share that allows for anonymous read and write access?
 
 First, a full port scan to see what's exposed:
 
@@ -61,7 +61,7 @@ Only `Development` allows writing.
 
 > **Answer:** `Development`
 
-## 3. Admin password from `creds.txt`
+## 3. What is the admin password available from creds.txt in one of the SMB shares?
 
 `Development` is empty, but `general` (read-only) holds a credentials file:
 
@@ -78,7 +78,7 @@ admin:WORKWORKHhallelujah@#
 
 > **Answer:** `WORKWORKHhallelujah@#`
 
-## 4. Subdomain with the "Login Form for FriendZone"
+## 4. There are several subdomains of the friendzone.red domain available on this server. What is the name of the subdomain that returns a login form with the title "Login Form for FriendZone"?
 
 Add `friendzone.red` to `/etc/hosts`, then brute-force subdomains against the box's own DNS resolver:
 
@@ -109,7 +109,7 @@ Over plain HTTP everything still shows the main page, but since **443** is open,
 
 > **Answer:** `administrator1.friendzone.red`
 
-## 5. Page providing the timestamp included by `dashboard.php`
+## 5. The dashboard.php page seems to be including another page that provides a timestamp. That page can also be visited directly. What is the relative path on the webserver to that page?
 
 Log in with the creds from step 3 and follow the message to `/dashboard.php`:
 
@@ -123,7 +123,7 @@ The timestamp is clearly pulled in from a separate included PHP file.
 
 > **Answer:** `timestamp.php`
 
-## 6. Full path to the `Development` share directory
+## 6. What's the full path on FriendZone to the directory that is shared by Samba as the Development share?
 
 Playing with the `pagename` parameter: deleting it changes the page, so it's an include. Classic LFI payloads (`/etc/passwd` and bypasses) return nothing — because the backend **appends `.php`** to whatever you pass. Proof: `pagename=login` returns `"Wrong!"` (it loaded `login.php`), so reading `/etc/samba/smb.conf` directly isn't possible.
 
@@ -131,7 +131,7 @@ Back to the `smbmap` output: the `Files` share was commented *"...Files /etc/Fil
 
 > **Answer:** `/etc/Development`
 
-## 7. User the webserver runs as
+## 7. What user is the webserver running as?
 
 Because `Development` is writable over SMB **and** readable by the webserver at `/etc/Development`, drop a webshell there:
 
@@ -148,7 +148,7 @@ https://administrator1.friendzone.red/dashboard.php?image_id=a.jpg&pagename=/etc
 
 > **Answer:** `www-data`
 
-## 8. User flag
+## 8. Submit the flag located in the friend user's home directory.
 
 Read it through the same webshell:
 
@@ -158,7 +158,7 @@ Read it through the same webshell:
 
 > `5f526b30b06ec592ee20a0124c429f22`
 
-## 9. The `friend` user's password
+## 9. What is the friend user's password?
 
 Upload a [php-reverse-shell](https://github.com/pentestmonkey/php-reverse-shell) (edit IP/port), start a listener, and trigger it the same way. Then upgrade to a fully interactive shell:
 
@@ -186,7 +186,7 @@ The password is reused for SSH as `friend`.
 
 > **Answer:** `Agpyu12!0.213$`
 
-## 10. Script root runs on a cron
+## 10. What is the full path to the script that root is running every few minutes on a cron?
 
 Watch the process list until the cron fires:
 
@@ -196,7 +196,7 @@ watch -n 1 'ps aux | grep -v grep'
 
 > **Answer:** `/opt/server_admin/reporter.py`
 
-## 11. World-writable file related to `reporter.py`
+## 11. What is the full path to the file related to reporter.py that is also world-writable?
 
 ```bash
 find / -writable -name "*.py" 2>/dev/null
@@ -206,7 +206,7 @@ This turns up `/usr/lib/python2.7/os.py` — the very library `reporter.py` impo
 
 > **Answer:** `/usr/lib/python2.7/os.py`
 
-## 12. Root flag — privilege escalation
+## 12. Submit the flag located in root's home directory.
 
 `reporter.py` imports `os`, and `os.py` is world-writable — so we hijack the library. The script:
 

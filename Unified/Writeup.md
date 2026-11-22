@@ -10,7 +10,7 @@
 
 ---
 
-## 1. First four open ports
+## 1. Which are the first four open ports?
 
 ```bash
 nmap 10.129.96.149
@@ -18,7 +18,7 @@ nmap 10.129.96.149
 
 > **Answer:** `22, 6789, 8080, 8443`
 
-## 2–3. Software on port 8443
+## 2. What is the title of the software that is running running on port 8443? 3. What is the version of the software that is running?
 
 A **UniFi Network** login panel:
 
@@ -30,12 +30,12 @@ A **UniFi Network** login panel:
 
 | Question | Answer |
 |---|---|
-| CVE | `CVE-2021-44228` (Log4Shell) |
-| Protocol JNDI leverages | `LDAP` |
-| Tool to intercept traffic confirming the attack | `tcpdump` |
-| Port to inspect | `389` |
+| What is the CVE for the identified vulnerability? | `CVE-2021-44228` (Log4Shell) |
+| What protocol does JNDI leverage in the injection? | `LDAP` |
+| What tool do we use to intercept the traffic, indicating the attack was successful? | `tcpdump` |
+| What port do we need to inspect intercepted traffic for? | `389` |
 
-## 8. User flag `michael` — Log4Shell RCE
+## 8. Submit the flag located in the michiael user's home directory.
 
 Listen on the LDAP port to catch the callback:
 
@@ -79,7 +79,7 @@ A reverse shell lands on the listener — read the flag from `michael`'s directo
 
 > `6ced1a6a89e666c0620cdb10262ba127`
 
-## 9. MongoDB service port
+## 9. What port is the MongoDB service running on?
 
 ```bash
 ps aux | grep mongo
@@ -91,7 +91,7 @@ unifi ... bin/mongod --dbpath /usr/lib/unifi/data/db --port 27117 ...
 
 > **Answer:** `27117`
 
-## 10–12. MongoDB enumeration
+## 10–12. What is the default database name for UniFi applications? What is the function we use to enumerate users within the database in MongoDB? What is the function we use to update users within the database in MongoDB?
 
 Connect to the database and list databases:
 
@@ -126,7 +126,7 @@ admin     0.000GB
 ```
 </details>
 
-## 13. Root user's password
+## 13. What is the password for the root user?
 
 The admin hash (`$6$` = SHA-512crypt) doesn't crack with `john` + rockyou. Instead, **overwrite the admin password** with our own hash and log into the UniFi panel:
 
@@ -149,7 +149,7 @@ After logging in, *Settings → Site* reveals the SSH login and password for roo
 
 > **Answer:** `NotACrackablePassword4U2022`
 
-## 14. Root flag
+## 14. Submit the flag located in root's home directory.
 
 ```bash
 ssh root@10.129.96.149   # NotACrackablePassword4U2022
