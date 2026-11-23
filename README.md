@@ -1,7 +1,7 @@
 # 🧪 HackTheBox — Writeups
 
 ![Platform](https://img.shields.io/badge/HackTheBox-Writeups-9FEF00?style=flat-square&logo=hackthebox&logoColor=black)
-![Machines](https://img.shields.io/badge/Machines-6-blue?style=flat-square)
+![Machines](https://img.shields.io/badge/Machines-7-blue?style=flat-square)
 ![Focus](https://img.shields.io/badge/Focus-Web%20%26%20AD%20Exploitation-informational?style=flat-square)
 
 Personal HackTheBox writeups — part **portfolio**, part **study notes for CWEE prep**.
@@ -19,6 +19,7 @@ Each writeup is organized around the machine's original tasks, focusing on the *
 | [**BountyHunter**](./BountyHunter/Writeup.md) | Retired · Easy | 🐧 Linux | XXE, PHP filters, credential reuse, `eval()` injection | ✅ |
 | [**Friendzone**](./Friendzone/Writeup.md) | Retired · Easy | 🐧 Linux | DNS zone transfer, SMB, LFI → RCE, credential reuse, Python library hijack | ✅ |
 | [**Cronos**](./Cronos/Writeup.md) | Retired · Medium | 🐧 Linux | DNS zone transfer, vhost enum, SQLi, command injection, Laravel cron privesc | ✅ |
+| [**Shibboleth**](./Shibboleth/Writeup.md) | Retired · Medium | 🐧 Linux | vhost enum, IPMI RAKP hash dump, Zabbix RCE, password reuse, MariaDB `wsrep_provider` (CVE-2021-27928) | ✅ |
 
 > ✅ completed
 
@@ -27,7 +28,7 @@ Each writeup is organized around the machine's original tasks, focusing on the *
 ## 🛠️ Tools used
 
 `nmap` · `smbclient` · `impacket` · `evil-winrm` · `gobuster` / `ffuf` · `burp suite` · `cyberchef`
-`msfvenom` · `john` · `marshalsec` / `rogue-jndi` · `tcpdump` · `mongo` · `smbmap` · `dig` · `sqlmap` · `linpeas`
+`msfvenom` · `metasploit` · `john` · `marshalsec` / `rogue-jndi` · `tcpdump` · `mongo` · `mysql` / `mariadb` · `smbmap` · `dig` · `sqlmap` · `gcc` · `linpeas`
 
 ---
 
