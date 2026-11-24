@@ -1,7 +1,7 @@
 # 🧪 HackTheBox — Writeups
 
 ![Platform](https://img.shields.io/badge/HackTheBox-Writeups-9FEF00?style=flat-square&logo=hackthebox&logoColor=black)
-![Machines](https://img.shields.io/badge/Machines-7-blue?style=flat-square)
+![Machines](https://img.shields.io/badge/Machines-8-blue?style=flat-square)
 ![Focus](https://img.shields.io/badge/Focus-Web%20%26%20AD%20Exploitation-informational?style=flat-square)
 
 Personal HackTheBox writeups — part **portfolio**, part **study notes for CWEE prep**.
@@ -11,17 +11,18 @@ Each writeup is organized around the machine's original tasks, focusing on the *
 
 ## 📂 Machines
 
-| Machine | Platform | OS | Key topics | Status |
-|---|---|:---:|---|:---:|
-| [**Archetype**](./Archetype/Writeup.md) | Starting Point | 🪟 Windows | SMB, MSSQL `xp_cmdshell`, Impacket, PS history, WinRM | ✅ |
-| [**Oopsie**](./Oopsie/Writeup.md) | Starting Point | 🐧 Linux | IDOR, cookie tampering, file upload, SUID / `$PATH` hijack | ✅ |
-| [**Unified**](./Unified/Writeup.md) | Starting Point | 🐧 Linux | Log4Shell (CVE-2021-44228), JNDI/LDAP, MongoDB | ✅ |
-| [**BountyHunter**](./BountyHunter/Writeup.md) | Retired · Easy | 🐧 Linux | XXE, PHP filters, credential reuse, `eval()` injection | ✅ |
-| [**Friendzone**](./Friendzone/Writeup.md) | Retired · Easy | 🐧 Linux | DNS zone transfer, SMB, LFI → RCE, credential reuse, Python library hijack | ✅ |
-| [**Cronos**](./Cronos/Writeup.md) | Retired · Medium | 🐧 Linux | DNS zone transfer, vhost enum, SQLi, command injection, Laravel cron privesc | ✅ |
-| [**Shibboleth**](./Shibboleth/Writeup.md) | Retired · Medium | 🐧 Linux | vhost enum, IPMI RAKP hash dump, Zabbix RCE, password reuse, MariaDB `wsrep_provider` (CVE-2021-27928) | ✅ |
+Sorted by **difficulty** first — machine lifecycle (Starting Point / Retired) is secondary.
 
-> ✅ completed
+| Machine | Difficulty | OS | Platform | Key topics |
+|---|:---:|:---:|:---:|---|
+| [**Archetype**](./Archetype/Writeup.md) | 🟢 Very Easy | 🪟 Windows | Starting Point | SMB, MSSQL `xp_cmdshell`, Impacket, PS history, WinRM |
+| [**Oopsie**](./Oopsie/Writeup.md) | 🟢 Very Easy | 🐧 Linux | Starting Point | IDOR, cookie tampering, file upload, SUID / `$PATH` hijack |
+| [**Unified**](./Unified/Writeup.md) | 🟢 Very Easy | 🐧 Linux | Starting Point | Log4Shell (CVE-2021-44228), JNDI/LDAP, MongoDB |
+| [**Alert**](./Alert/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | vhost enum, stored XSS → LFI chain, htpasswd cracking, cron / writable-include privesc |
+| [**BountyHunter**](./BountyHunter/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | XXE, PHP filters, credential reuse, `eval()` injection |
+| [**Friendzone**](./Friendzone/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | DNS zone transfer, SMB, LFI → RCE, credential reuse, Python library hijack |
+| [**Cronos**](./Cronos/Writeup.md) | 🟧 Medium | 🐧 Linux | Retired | DNS zone transfer, vhost enum, SQLi, command injection, Laravel cron privesc |
+| [**Shibboleth**](./Shibboleth/Writeup.md) | 🟧 Medium | 🐧 Linux | Retired | vhost enum, IPMI RAKP hash dump, Zabbix RCE, password reuse, MariaDB `wsrep_provider` (CVE-2021-27928) |
 
 ---
 
