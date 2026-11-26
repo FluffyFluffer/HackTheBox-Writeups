@@ -1,7 +1,7 @@
 # 🧪 HackTheBox — Writeups
 
 ![Platform](https://img.shields.io/badge/HackTheBox-Writeups-9FEF00?style=flat-square&logo=hackthebox&logoColor=black)
-![Machines](https://img.shields.io/badge/Machines-8-blue?style=flat-square)
+![Machines](https://img.shields.io/badge/Machines-9-blue?style=flat-square)
 ![Focus](https://img.shields.io/badge/Focus-Web%20%26%20AD%20Exploitation-informational?style=flat-square)
 
 Personal HackTheBox writeups — part **portfolio**, part **study notes for CWEE prep**.
@@ -19,6 +19,7 @@ Sorted by **difficulty** first — machine lifecycle (Starting Point / Retired) 
 | [**Oopsie**](./Oopsie/Writeup.md) | 🟢 Very Easy | 🐧 Linux | Starting Point | IDOR, cookie tampering, file upload, SUID / `$PATH` hijack |
 | [**Unified**](./Unified/Writeup.md) | 🟢 Very Easy | 🐧 Linux | Starting Point | Log4Shell (CVE-2021-44228), JNDI/LDAP, MongoDB |
 | [**Alert**](./Alert/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | vhost enum, stored XSS → LFI chain, htpasswd cracking, cron / writable-include privesc |
+| [**Cap**](./Cap/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | IDOR, PCAP analysis, cleartext FTP creds, password reuse, Linux capabilities (`cap_setuid`) |
 | [**BountyHunter**](./BountyHunter/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | XXE, PHP filters, credential reuse, `eval()` injection |
 | [**Friendzone**](./Friendzone/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | DNS zone transfer, SMB, LFI → RCE, credential reuse, Python library hijack |
 | [**Cronos**](./Cronos/Writeup.md) | 🟧 Medium | 🐧 Linux | Retired | DNS zone transfer, vhost enum, SQLi, command injection, Laravel cron privesc |
@@ -29,7 +30,7 @@ Sorted by **difficulty** first — machine lifecycle (Starting Point / Retired) 
 ## 🛠️ Tools used
 
 `nmap` · `smbclient` · `impacket` · `evil-winrm` · `gobuster` / `ffuf` · `burp suite` · `cyberchef`
-`msfvenom` · `metasploit` · `john` · `marshalsec` / `rogue-jndi` · `tcpdump` · `mongo` · `mysql` / `mariadb` · `smbmap` · `dig` · `sqlmap` · `gcc` · `linpeas`
+`msfvenom` · `metasploit` · `john` · `marshalsec` / `rogue-jndi` · `tcpdump` · `mongo` · `mysql` / `mariadb` · `smbmap` · `dig` · `sqlmap` · `gcc` · `linpeas` · `wireshark`
 
 ---
 
