@@ -1,7 +1,7 @@
 # 🧪 HackTheBox — Writeups
 
 ![Platform](https://img.shields.io/badge/HackTheBox-Writeups-9FEF00?style=flat-square&logo=hackthebox&logoColor=black)
-![Machines](https://img.shields.io/badge/Machines-9-blue?style=flat-square)
+![Machines](https://img.shields.io/badge/Machines-10-blue?style=flat-square)
 ![Focus](https://img.shields.io/badge/Focus-Web%20%26%20AD%20Exploitation-informational?style=flat-square)
 
 Personal HackTheBox writeups — part **portfolio**, part **study notes for CWEE prep**.
@@ -22,6 +22,7 @@ Sorted by **difficulty** first — machine lifecycle (Starting Point / Retired) 
 | [**Cap**](./Cap/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | IDOR, PCAP analysis, cleartext FTP creds, password reuse, Linux capabilities (`cap_setuid`) |
 | [**BountyHunter**](./BountyHunter/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | XXE, PHP filters, credential reuse, `eval()` injection |
 | [**Friendzone**](./Friendzone/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | DNS zone transfer, SMB, LFI → RCE, credential reuse, Python library hijack |
+| [**GoodGames**](./GoodGames/Writeup.md) | 🟩 Easy | 🐧 Linux | Retired | SQLi (sqlmap), MD5 cracking, vhost enum, SSTI (Jinja2) → RCE, Docker breakout via bind mount, SUID, password reuse |
 | [**Cronos**](./Cronos/Writeup.md) | 🟧 Medium | 🐧 Linux | Retired | DNS zone transfer, vhost enum, SQLi, command injection, Laravel cron privesc |
 | [**Shibboleth**](./Shibboleth/Writeup.md) | 🟧 Medium | 🐧 Linux | Retired | vhost enum, IPMI RAKP hash dump, Zabbix RCE, password reuse, MariaDB `wsrep_provider` (CVE-2021-27928) |
 
